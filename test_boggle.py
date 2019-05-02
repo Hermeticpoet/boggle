@@ -35,8 +35,13 @@ class TestBoggle(unittest.TestCase):
         
     def test_grid_is_filled_with_letters(self):
         """
-        Test to ensure that each coordinate in the grid is filled 
+        Test to ensure that each coordinate in the grid contains 
         with upper case letters
         """
+        grid = boggle.make_grid(2, 3)
+        for letter in grid.values():
+            self.assertIn(letter, ascii_uppercase)
+            
+            
         
 
