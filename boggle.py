@@ -1,6 +1,7 @@
 from string import ascii_uppercase
 from random import choice
 
+
 def make_grid(width, height):
     """
     Creates a grid that will hold all of the tiles for a 
@@ -9,6 +10,7 @@ def make_grid(width, height):
     return {(row, col): choice(ascii_uppercase) 
         for row in range(height)
         for col in range(width)}
+
 
 def neighbours_of_position(coords):
     """
@@ -37,5 +39,16 @@ def neighbours_of_position(coords):
             left, right,
             bottom_left, bottom_center, bottom_right]
     
-    
+
+def all_grid_neighbours(grid):
+    """
+    Get all of the possible neighbours for each position
+    in  the grid
+    """
+    neighbours = {}
+    for position in grid:
+        position_neighbours = neighbours_of_position(position)
+        neighbours[position] = [p for p in position_neighbours if p in grid]
+        
+    return neighbours
     
